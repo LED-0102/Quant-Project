@@ -8,8 +8,10 @@ led['criteria'] = led['cagr']/led['p/e']
 led = led.sort_values(by='criteria', ascending=False)
 led.index = numpy.arange(1, len(led)+1)
 
-columns_to_exclude = {'criteria'}
-all_columns = set(led.keys())
+led.drop('criteria', axis=1, inplace=True)
 
-led.to_csv('preferred_stocks.csv', columns=list(columns_to_exclude.symmetric_difference(all_columns)))
+led.to_csv('preferred_stocks.csv')
+
+
+
 
